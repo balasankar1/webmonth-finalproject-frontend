@@ -1,0 +1,98 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+body{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(45deg,#FF9CE3,#4ab3ff);
+    overflow: hidden;
+}
+
+nav{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 80px;
+}
+
+main{
+    height: 90vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 80px;
+    justify-content: space-between;
+}
+
+main > div {
+    width: 50%;
+}
+
+.sign-in-sign-up{
+    background: rgba(255,255,255,0.4);
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid white;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+}
+
+.heading{
+    font-size: 55px;
+     letter-spacing: 2px;
+}
+
+.left-section{
+    transform: translateY(-70%);
+}
+
+.sub-heading{
+    font-weight: normal;
+    font-size: 25px;
+    letter-spacing: 3px;
+}
+
+.right-section{
+    transform: translateY(-50px);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.homepage-img{
+    width: 80%;
+
+}
+
+.circle1,.circle2{
+z-index: -5;
+position: absolute;
+border-radius: 50%;
+}
+
+.circle1{
+    height: 600px;
+    width: 600px;
+    background-image: linear-gradient(180deg,#97FF57 0%,#0d99ff 99.9%,#0094ff 100%) ;
+    filter: blur(10px);
+    transform: rotate(18deg);
+    left: -120px;
+    top:-150px;
+}
+
+.circle2{
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(180deg,#FF57D0 0%,#0d99ff 99.99%,#0094FF 100%);
+    filter: blur(5px);
+    transform: rotate(18deg);
+    bottom: -100px;
+    right:-80px;
+
+}
