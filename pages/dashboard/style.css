@@ -99,7 +99,11 @@ nav{
     border: 1px solid white;
     padding: 10px;
     border-radius: 15px;
-    -ms-overflow-style: none; 
+    
     scrollbar-width: none; 
      overflow-y: scroll;
 }
+
+.card-content::-webkit-scrollbar{
+    display: none;
+  }

@@ -42,7 +42,7 @@ body{
 }
 
 .create-note-input{
-    height: 60%;
+    height: 50%;
     width:90%;
     border-radius:15px;
     border: none;
@@ -51,30 +51,6 @@ body{
     -ms-overflow-style: none; 
 scrollbar-width: none; 
 overflow-y: scroll;
-}
-
-.create-note-input:focus{
-    outline: none;
-}
-
-.create-note-button{
-    background: transparent;
-    padding: 10px;
-    border-radius: 15px;
-    border: 1px solid white;
-    cursor: pointer;
-}
-
-.create-note-input{
-    height: 50%;
-    width:90%;
-    border-radius:15px;
-    border: none;
-    color: black;
-    text-align: center;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-    overflow-y: scroll;
 
 }
 .create-note-heading{
@@ -88,4 +64,12 @@ overflow-y: scroll;
 }
 .create-note-input,.create-note-heading:focus{
     outline: none;
+}
+
+.create-note-button{
+    background: transparent;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid white;
+    cursor: pointer;
 }
