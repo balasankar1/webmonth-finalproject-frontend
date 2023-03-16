@@ -1,0 +1,65 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+body{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(45deg,#FF9CE3,#4ab3ff);
+    overflow: hidden;
+    opacity: 0;
+    transition: all 1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.visible{
+    opacity: 1;
+}
+
+.create-notes-container{
+    height: 350px;
+    width: 300px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 15px;
+    border: 1px solid white;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.heading{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.create-note-input{
+    height: 60%;
+    width:90%;
+    border-radius:15px;
+    border: none;
+    color: black;
+    text-align: center;
+    -ms-overflow-style: none; 
+scrollbar-width: none; 
+overflow-y: scroll;
+
+}
+.create-note-input:focus{
+    outline: none;
+}
+
+.create-note-button{
+    background: transparent;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid white;
+    cursor: pointer;
+}
