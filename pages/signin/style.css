@@ -1,0 +1,142 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+body{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(45deg,#FF9CE3,#4ab3ff);
+    overflow: hidden;
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.visible{
+    opacity: 1;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+main{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+
+    transform: translateY(170px);
+    align-items: center;
+    
+    
+}
+.sign-in{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 280px;
+    width: 300px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 15px;
+    border: 1px solid white;
+    backdrop-filter: blur(7px);
+    padding: 15px 0;
+}
+.sign-up{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 380px;
+    width: 300px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 15px;
+    border: 1px solid white;
+    backdrop-filter: blur(7px);
+    padding: 15px 0;
+
+}
+.sign-in-button,.sign-up-button{
+    background: transparent;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+.sign-in-options,.sign-up-options:focus{
+    outline: none;
+}
+
+.sign-in-options{
+    height: 15.5%;
+    width:80%;
+    border-radius:15px;
+    border: none;
+    color: black;
+    text-align: center;
+}
+.sign-up-options{
+    height: 11.5%;
+    width:80%;
+    border-radius:15px;
+    border: none;
+    color: black;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.circle1,.circle2{
+    z-index: -5;
+    position: absolute;
+    border-radius: 50%;
+    }
+    
+    .circle1{
+        height: 600px;
+        width: 600px;
+        background-image: linear-gradient(180deg,#97FF57 0%,#0d99ff 99.9%,#0094ff 100%) ;
+        filter: blur(10px);
+        transform: rotate(18deg);
+        left: -120px;
+        top:-150px;
+    }
+    
+    .circle2{
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(180deg,#FF57D0 0%,#0d99ff 99.99%,#0094FF 100%);
+        filter: blur(5px);
+        transform: rotate(18deg);
+        bottom: -100px;
+        right:-80px;
+    
+    }

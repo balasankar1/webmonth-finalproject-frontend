@@ -1,38 +1,65 @@
-const body = document.querySelector('body');
-
-window.addEventListener('load',()=>{
-    body.classList.add("visible");
-})
-
+const body = document.querySelector("body");
 const cardContainer = document.querySelector(".card-container");
 
-const cardData=[
-    {  heading:"heading1",content:"hasfhbwasyufgasdfugsdfyusdfhgsdyufhsdfyugsdfyusdhfiuasdhfsdhfesdjfsdfbhuwsehfyuweafas dfytegfyeasd fytesvfyteas faygsdc std fvhygsdt fsdgf sdfgcdfytc ysdveygstdc faystdcf saytfcasdgfc hstdfvcsdhgfc wedrtgfeyusdfeaiusdgf",id:0},
-    {  heading:"heading2",content:"content",id:1},
-    {  heading:"heading3",content:"content",id:2},
-    {  heading:"heading4",content:"content",id:3},
-    {  heading:"heading5",content:"content",id:4},
-    {  heading:"heading6",content:"content",id:5},
-    {  heading:"heading7",content:"content",id:6},
-    {  heading:"heading8",content:"content",id:7},
-]
+const token = localStorage.getItem("jwt");
 
+const logout = document.querySelector(".log-out");
+const createnNoteButton = document.querySelector(".new-note");
 
-const createNotes = (array) =>{
-array.forEach(cardObj =>{
-    const {heading,content,id} = cardObj;
+logout.addEventListener("click", () => {
+  localStorage.removeItem("jwt");
+  location.href = "/";
+});
+
+const apiurl = ji;
+const createNoteButton = document.querySelector(".new-note");
+createNoteButton.addEventListener("click", () => {
+  location.href = "../createnotes/index.html";
+  console.log("hi");
+});
+
+let cardData = [];
+
+createNoteButton.addEventListener("click", () => {
+  location.href = "/pages/createnotes/index.html";
+});
+
+const createNotes = (array) => {
+  cardContainer.innerHTML = "";
+  array.forEach((cardObj) => {
+    const { heading, content } = cardObj;
+    const id = cardObj.noteId;
 
     const card = document.createElement("div");
     card.classList.add("card");
-    card.id=id;
+    card.id = id;
 
     const innerhtml = `  <div class="card-header">
     <div class="card-heading">${heading}</div><a href="../updatenotes/updatenotes.html?noteId=${id}">
-    <div class="edit-note"> <img src="../../assets/edit-note.svg" alt=""></div> </div><div class="card-content">${content}</div>`
+    <div class="edit-note"> <img src="../../assets/edit-note.svg" alt=""></div> </div><div class="card-content">${content}</div>`;
     card.innerHTML = innerhtml;
     cardContainer.appendChild(card);
-    
-})
-}
+  });
+};
 
-createNotes(cardData);
+window.addEventListener("load", () => {
+  body.classList.add("visible");
+
+  if (token) {
+    fetch(`${apiurl}/auth/signup`, {
+      method: "GET",
+      headers: {
+        authorization: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        cardData = data.data;
+        createNotes(cardData);
+      })
+      .catch((err) => {
+        alert("Error Signing Up!!! Re-try...");
+        console.log(err);
+      });
+  }
+});
