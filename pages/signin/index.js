@@ -4,21 +4,24 @@ window.addEventListener("load", () => {
   body.classList.add("visible");
 });
 
-const signUpForm = document.querySelector(".sign-up");
+const apiurl = "http://localhost:8000";
 
-signUpForm.addEventListener("submit", (event) => {
+const signUpForm = document.querySelector(".sign-up");
+const signUpButton = document.querySelector(".sign-up-button");
+
+signUpButton.addEventListener("click", (event) => {
   event.preventDefault();
-  console.log("hi");
 
   const email = document.querySelector(".signup-email").value;
+
   const name = document.querySelector(".signup-name").value;
   const password = document.querySelector(".signup-password").value;
   const reTypedPassword = document.querySelector(
     ".signup-retyped-password"
   ).value;
-  console.log(email, password, reTypedPassword);
+
   if (password != reTypedPassword) {
-    alert("password");
+    alert("password doesn't match");
     retrun;
   }
 
@@ -34,9 +37,10 @@ signUpForm.addEventListener("submit", (event) => {
       const { token } = data;
       if (token) {
         localStorage.setItem("jwt", token);
-        location.href = "/pages/dashboard/index.html";
+        location.href = "/pages/dashboard/dashboard.html";
       } else {
-        alert("Signup Again");
+        alert("user already exists ");
+        location.href = "/pages/signin/index.html";
       }
     })
     .catch((err) => {
@@ -47,36 +51,40 @@ signUpForm.addEventListener("submit", (event) => {
 
 const signInForm = document.querySelector(".sign-in");
 
-signInForm.addEventListener("submit", (event) => {
+const signInButton = document.querySelector(".sign-in-button");
+
+signInButton.addEventListener("click", (event) => {
   event.preventDefault();
 
-  signInForm.addEventListener("submit", (event) => {
-    const sigInEmail = document.querySelector(".sigin-email");
-    const sigInPassword = document.querySelector(".signin-password");
+  const sigInEmail = document.querySelector(".sigin-email");
+  const sigInPassword = document.querySelector(".signin-password");
 
-    const email = sigInEmail.value;
-    const password = sigInPassword.value;
+  const email = sigInEmail.value;
+  console.log(email);
 
-    fetch(`${apiurl}/auth/signin`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
+  const password = sigInPassword.value;
+
+  // console.log(email, password);
+
+  fetch(`${apiurl}/auth/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const { token } = data;
+      if (token) {
+        localStorage.setItem("jwt", token);
+        location.href = "/pages/dashboard/dashboard.html";
+      } else {
+        alert("SignIn Again");
+      }
     })
-      .then((res) => res.json())
-      .then((data) => {
-        const { token } = data;
-        if (token) {
-          localStorage.setItem("jwt", token);
-          location.href = "/pages/dashboard/index.html";
-        } else {
-          alert("SignIn Again");
-        }
-      })
-      .catch((err) => {
-        alert("Error Signing In!!! Re-try...");
-        console.log(err);
-      });
-  });
+    .catch((err) => {
+      alert("Error Signing In!!! Re-try...");
+      console.log(err);
+    });
 });

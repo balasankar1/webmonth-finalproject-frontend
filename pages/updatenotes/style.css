@@ -1,75 +1,108 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    color: white;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: white;
 }
-body{
-    min-height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(45deg,#FF9CE3,#4ab3ff);
-    overflow: hidden;
-    opacity: 0;
-    transition: all 1s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(45deg, #ff9ce3, #4ab3ff);
+  overflow: hidden;
+  opacity: 0;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.visible{
-    opacity: 1;
-}
-
-.create-notes-container{
-    height: 350px;
-    width: 300px;
-    background: rgba(255,255,255,0.4);
-    border-radius: 15px;
-    border: 1px solid white;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(6px);
-    padding: 23px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+.visible {
+  opacity: 1;
 }
 
-.heading{
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
+.create-notes-container {
+  height: 445px;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+  border: 1px solid white;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.create-note-input{
-    height: 50%;
-    width:90%;
-    border-radius:15px;
-    border: none;
-    color: black;
-    text-align: center;
-    -ms-overflow-style: none; 
-scrollbar-width: none; 
-overflow-y: scroll;
-
-}
-.create-note-heading{
-    height: 50%;
-    width:90%;
-    border-radius:15px;
-    border: none;
-    color: black;
-    text-align: center;
-
-}
-.create-note-input,.create-note-heading:focus{
-    outline: none;
+.heading {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  height: 70px;
 }
 
-.create-note-button{
-    background: transparent;
-    padding: 10px;
-    border-radius: 15px;
-    border: 1px solid white;
-    cursor: pointer;
+.create-note-input {
+  height: 60%;
+  width: 90%;
+  border-radius: 15px;
+  border: none;
+  color: black;
+  text-align: center;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+.create-note-heading {
+  height: 50%;
+  width: 90%;
+  border-radius: 15px;
+  border: none;
+  color: black;
+  text-align: center;
+}
+.create-note-input,
+.create-note-heading:focus {
+  outline: none;
+}
+
+.create-note-button {
+  background: transparent;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.circle1,
+.circle2 {
+  z-index: -5;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle1 {
+  height: 600px;
+  width: 600px;
+  background-image: linear-gradient(
+    180deg,
+    #97ff57 0%,
+    #0d99ff 99.9%,
+    #0094ff 100%
+  );
+  filter: blur(10px);
+  transform: rotate(18deg);
+  left: -120px;
+  top: -150px;
+}
+
+.circle2 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(180deg, #ff57d0 0%, #0d99ff 99.99%, #0094ff 100%);
+  filter: blur(5px);
+  transform: rotate(18deg);
+  bottom: -100px;
+  right: -80px;
 }

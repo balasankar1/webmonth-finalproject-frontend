@@ -4,29 +4,24 @@ const cardContainer = document.querySelector(".card-container");
 const token = localStorage.getItem("jwt");
 
 const logout = document.querySelector(".log-out");
-const createnNoteButton = document.querySelector(".new-note");
+const createNoteButton = document.querySelector(".new-note");
+
+const apiurl = "http://localhost:8000";
 
 logout.addEventListener("click", () => {
   localStorage.removeItem("jwt");
   location.href = "/";
 });
 
-const apiurl = ji;
-const createNoteButton = document.querySelector(".new-note");
-createNoteButton.addEventListener("click", () => {
-  location.href = "../createnotes/index.html";
-  console.log("hi");
-});
-
 let cardData = [];
 
 createNoteButton.addEventListener("click", () => {
-  location.href = "/pages/createnotes/index.html";
+  location.href = "../createnotes/index.html";
 });
 
-const createNotes = (array) => {
+const createNotes = (array1) => {
   cardContainer.innerHTML = "";
-  array.forEach((cardObj) => {
+  array1.forEach((cardObj) => {
     const { heading, content } = cardObj;
     const id = cardObj.noteId;
 
@@ -34,10 +29,38 @@ const createNotes = (array) => {
     card.classList.add("card");
     card.id = id;
 
-    const innerhtml = `  <div class="card-header">
-    <div class="card-heading">${heading}</div><a href="../updatenotes/updatenotes.html?noteId=${id}">
-    <div class="edit-note"> <img src="../../assets/edit-note.svg" alt=""></div> </div><div class="card-content">${content}</div>`;
-    card.innerHTML = innerhtml;
+    const insidehtml = `<div class="card-header">
+    <div class="heading">${heading}</div>
+    <a href="../updatenotes/updatenotes.html?noteId=${id}"
+      ><div class="edit-note">
+        <img class="img" src="../../assets/icons8-edit.svg" alt="" /></div
+    ></a>
+    <div class="delete-note">
+      <img class="img" src="../../assets/icons8-delete.svg" alt="" />
+    </div>
+  </div>
+  <div class="card-content">${content}</div>`;
+
+    card.innerHTML = insidehtml;
+
+    const deleteButton = card.querySelector(".delete-note");
+
+    deleteButton.addEventListener("click", () => {
+      fetch(`${apiurl}/notes/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: token,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.message);
+          location.href = "dashboard.html";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
     cardContainer.appendChild(card);
   });
 };
@@ -46,7 +69,7 @@ window.addEventListener("load", () => {
   body.classList.add("visible");
 
   if (token) {
-    fetch(`${apiurl}/auth/signup`, {
+    fetch(`${apiurl}/notes/getallnotes`, {
       method: "GET",
       headers: {
         authorization: token,
@@ -58,8 +81,9 @@ window.addEventListener("load", () => {
         createNotes(cardData);
       })
       .catch((err) => {
-        alert("Error Signing Up!!! Re-try...");
         console.log(err);
       });
+  } else {
+    location.href = "/";
   }
 });
