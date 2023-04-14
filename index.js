@@ -5,7 +5,7 @@ window.addEventListener("load", () => {
   const token = localStorage.getItem("jwt");
 
   if (token) {
-    location.href = "/pages/dashboard/index.html";
+    location.href = "/pages/dashboard/dashboard.html";
   }
 });
 

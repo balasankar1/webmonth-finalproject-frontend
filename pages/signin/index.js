@@ -22,7 +22,7 @@ signUpButton.addEventListener("click", (event) => {
 
   if (password != reTypedPassword) {
     alert("password doesn't match");
-    retrun;
+    return;
   }
 
   fetch(`${apiurl}/auth/signup`, {
